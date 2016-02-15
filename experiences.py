@@ -58,12 +58,12 @@ def experience1():
     
     # signal de position
     ncodeur= 100 # nombre de points par tout
-    ncodeur= 10000000000
+    # ncodeur= 10000000000
     from math import pi
     pas_codeur = (2*pi)/ncodeur
     nb_pas=position_articulaire_cylindre//pas_codeur
     bruit=pas_codeur*np.random.randn(nech)/3 + pas_codeur*np.sin(2*pi*fc*temps);
-    bruit=0 ;
+    # bruit=0 ;
     codeur =nb_pas*pas_codeur+ bruit ;
 #    plt.figure(1)
 #    plt.plot(temps, position_articulaire_cylindre,temps, codeur)
@@ -72,7 +72,7 @@ def experience1():
     #signal de couple
     couple_max=np.amax(profil_couple)
     bruit=couple_max*np.random.randn(nech)/20 + couple_max*np.sin(2*pi*fc*temps)/100;
-    bruit=0;
+    #bruit=0;
     couple_mesure=profil_couple + bruit
     
     return couple_mesure, codeur, tech, rayon
