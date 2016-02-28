@@ -10,11 +10,10 @@ def experience1():
     g=9.81 # acceleration de la gravité
     #g=10
     
-    M=10000  # vmasse de 10 tonnes
+    M=10000  # masse de 10 tonnes
     rayon = 1.35/2 # rayon des roues
-    ZZ = 600 # inertie des cylindres
-    ZZ=0
-    Fv=100 # à vérifier dans la thèse de Charles Eric
+    ZZ = 2*600 # inertie des cylindres
+    Fv=100 # frottement sec
     mu=0.01
     Fs = mu*M*g 
     
@@ -54,16 +53,16 @@ def experience1():
     acceleration_articulaire_cylindre=profil_acceleration/rayon
     
     #le couple moteur
-    profil_couple=profil_force*rayon + 2*ZZ*acceleration_articulaire_cylindre
+    profil_couple=profil_force*rayon + ZZ*acceleration_articulaire_cylindre
     
     # signal de position
     ncodeur= 100 # nombre de points par tout
-    # ncodeur= 10000000000
+    #ncodeur= 10000000000
     from math import pi
     pas_codeur = (2*pi)/ncodeur
     nb_pas=position_articulaire_cylindre//pas_codeur
     bruit=pas_codeur*np.random.randn(nech)/3 + pas_codeur*np.sin(2*pi*fc*temps);
-    # bruit=0 ;
+    #bruit=0 ;
     codeur =nb_pas*pas_codeur+ bruit ;
 #    plt.figure(1)
 #    plt.plot(temps, position_articulaire_cylindre,temps, codeur)
